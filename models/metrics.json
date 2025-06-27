@@ -1,50 +1,50 @@
 {
-    "best_threshold": 0.24999999999999992,
-    "f1_score": 0.5403151065801668,
-    "precision": 0.37491961414791,
-    "recall": 0.966832504145937,
-    "roc_auc": 0.5894636699864704,
+    "best_threshold": 0.19999999999999996,
+    "f1_score": 0.5389815232086526,
+    "precision": 0.37004950495049505,
+    "recall": 0.9917081260364843,
+    "roc_auc": 0.5667579841736683,
     "confusion_matrix": [
         [
-            114,
-            972
+            68,
+            1018
         ],
         [
-            20,
-            583
+            5,
+            598
         ]
     ],
     "report": {
         "0": {
-            "precision": 0.8507462686567164,
-            "recall": 0.10497237569060773,
-            "f1-score": 0.18688524590163935,
+            "precision": 0.9315068493150684,
+            "recall": 0.06261510128913444,
+            "f1-score": 0.11734253666954271,
             "support": 1086.0
         },
         "1": {
-            "precision": 0.37491961414791,
-            "recall": 0.966832504145937,
-            "f1-score": 0.5403151065801668,
+            "precision": 0.37004950495049505,
+            "recall": 0.9917081260364843,
+            "f1-score": 0.5389815232086526,
             "support": 603.0
         },
-        "accuracy": 0.4126702190645352,
+        "accuracy": 0.39431616341030196,
         "macro avg": {
-            "precision": 0.6128329414023133,
-            "recall": 0.5359024399182724,
-            "f1-score": 0.3636001762409031,
+            "precision": 0.6507781771327817,
+            "recall": 0.5271616136628093,
+            "f1-score": 0.32816202993909765,
             "support": 1689.0
         },
         "weighted avg": {
-            "precision": 0.6808685465319028,
-            "recall": 0.4126702190645352,
-            "f1-score": 0.3130653560195506,
+            "precision": 0.7310576020374854,
+            "recall": 0.39431616341030196,
+            "f1-score": 0.2678743950964718,
             "support": 1689.0
         }
     },
     "best_params": {
         "classifier__max_depth": null,
         "classifier__min_samples_leaf": 1,
-        "classifier__min_samples_split": 5,
+        "classifier__min_samples_split": 2,
         "classifier__n_estimators": 100
     }
 }
