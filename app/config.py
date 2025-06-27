@@ -1,16 +1,27 @@
+from pathlib import Path
+
+# Путь относительно корня проекта
+PROJECT_ROOT = Path(__file__).resolve().parent.parent  # Поднимаемся на два уровня вверх
+PKL_PATH = PROJECT_ROOT / "models"
+DATA_PATH = PROJECT_ROOT / "data"
+RESULT_PATH = PROJECT_ROOT / "results"
+
 # === Настройки сервера ===
 HOST = "127.0.0.1"
 PORT = 8000
 
 # === Пути к сохранённым моделям ===
-MODEL_PATH = "../models/best_model.pkl"
-THRESHOLD_PATH = "../models/best_threshold.pkl"
-FEATURES_PATH = "../models/features.pkl"
-PIPELINE_PATH = "../models/pipeline.pkl"
-CATEGORICAL_FEATURES = "../models/categorical_features.pkl"
+MODEL_PATH = PKL_PATH / "best_model.pkl"
+THRESHOLD_PATH = PKL_PATH / "best_threshold.pkl"
+FEATURES_PATH = PKL_PATH / "features.pkl"
+PIPELINE_PATH = PKL_PATH / "pipeline.pkl"
+CATEGORICAL_FEATURES = PKL_PATH / "categorical_features.pkl"
+METRICS_PATH = PKL_PATH / "metrics.json"
 
-TEST_PATH = "../data/heart_test.csv"
-TRAIN_PATH = "../data/heart_train.csv"
+TEST_PATH = DATA_PATH / "heart_test.csv"
+TRAIN_PATH = DATA_PATH / "heart_train.csv"
+
+RESULT_PATH = RESULT_PATH / "predictions.csv"
 
 # === Целевая переменная ===
 TARGET = "Heart_Attack_Risk_(Binary)"

@@ -4,7 +4,7 @@ from app.preprocessing import validate_data, prepare_data, predict
 
 class PredictionService:
     def __init__(self):
-        pass  # Можно загрузить модель, scaler и т.д., если они хранятся не глобально
+        pass
 
     def predict_from_json(self, data: list[dict]) -> list[dict]:
         df = pd.DataFrame(data)

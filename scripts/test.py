@@ -2,7 +2,8 @@ import os
 
 import pandas as pd
 
-from app.config import TEST_PATH
+from app.config import TEST_PATH, RESULT_PATH
+from app.model_trainer.save_load import save_csv
 from app.preprocessing import predict, prepare_data
 
 # === Считываем тестовые данные из CSV-файла, указанного в константе `TEST_PATH`. ===
@@ -19,7 +20,5 @@ df_result = pd.DataFrame({
     "probability": probs
 })
 
-os.makedirs("../results", exist_ok=True)
-
-df_result.to_csv("../results/predictions.csv", index=False)
+save_csv(df_result, RESULT_PATH)
 print("Файл 'results/predictions.csv' готов. Содержит столбцы: id и prediction и probability.")

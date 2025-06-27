@@ -4,11 +4,11 @@ import pandas as pd
 from fastapi import HTTPException
 
 from app.validators import validate_input_data
-from app.config import FEATURES_PATH, PIPELINE_PATH, THRESHOLD_PATH
+from app.config import FEATURES_PATH, MODEL_PATH, THRESHOLD_PATH
 
 # === Загрузка обученных объектов ===
 try:
-    PIPELINE = joblib.load(PIPELINE_PATH)
+    MODEL = joblib.load(MODEL_PATH)
     THRESHOLD = joblib.load(THRESHOLD_PATH)
     FEATURES = joblib.load(FEATURES_PATH)
 except FileNotFoundError:
@@ -159,7 +159,7 @@ def predict(df: pd.DataFrame) -> tuple[np.ndarray, np.ndarray]:
     """
     Выполняет предсказание вероятностей и классов для заданных признаков.
 
-    Эта функция использует обученную модель (PIPELINE) для получения вероятностей
+    Эта функция использует обученную модель (MODEL) для получения вероятностей
     принадлежности к положительному классу, а затем преобразует эти вероятности в
     бинарные предсказания на основе заданного порога (THRESHOLD).
 
@@ -171,6 +171,6 @@ def predict(df: pd.DataFrame) -> tuple[np.ndarray, np.ndarray]:
             - probs (numpy.ndarray): Массив вероятностей положительного класса.
             - preds (numpy.ndarray): Массив бинарных предсказаний (0 или 1).
     """
-    probs = PIPELINE.predict_proba(df)[:, 1]
+    probs = MODEL.predict_proba(df)[:, 1]
     preds = (probs > THRESHOLD).astype(int)
     return probs, preds
