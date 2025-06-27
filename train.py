@@ -44,4 +44,4 @@ save_model(categorical, CATEGORICAL_FEATURES)
 
 save_json(metrics, METRICS_PATH)
 
-print(f"✅ Лучшая модель: {best_model_name}, F1: {metrics['f1_score']:.4f}")
+print(f"Лучшая модель: {best_model_name}, F1: {metrics['f1_score']:.4f}")

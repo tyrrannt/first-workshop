@@ -1,5 +1,3 @@
-import os
-
 import pandas as pd
 
 from app.config import TEST_PATH, RESULT_PATH

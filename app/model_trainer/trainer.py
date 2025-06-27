@@ -1,5 +1,4 @@
 from sklearn.model_selection import GridSearchCV, StratifiedKFold
-from imblearn.over_sampling import SMOTE
 from sklearn.pipeline import Pipeline
 
 
@@ -53,9 +52,6 @@ class ModelTrainer:
         from sklearn.model_selection import train_test_split
         X_train, X_val, y_train, y_val = train_test_split(self.X, self.y, test_size=0.2, stratify=self.y,
                                                           random_state=42)
-        #
-        # smote = SMOTE(random_state=42)
-        # X_res, y_res = smote.fit_resample(X_train, y_train)
 
         results = {}
 
@@ -73,7 +69,6 @@ class ModelTrainer:
                 n_jobs=-1,
                 verbose=1
             )
-            # grid.fit(X_res, y_res)
             grid.fit(X_train, y_train)
             results[name] = {
                 "best_model": grid.best_estimator_,
