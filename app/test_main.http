@@ -1,0 +1,11 @@
+# Test your FastAPI endpoints
+
+POST http://127.0.0.1:8000/predict_json
+Accept: application/json
+
+###
+
+POST http://127.0.0.1:8000/predict_file
+Accept: application/json
+
+###
