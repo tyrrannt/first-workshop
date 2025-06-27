@@ -23,6 +23,9 @@ project/
 │   ├── main.py             # Точка входа для FastAPI
 │   ├── preprocessing.py    # Функции предобработки и валидации
 │   ├── schemas.py          # Схемы данных
+│   ├── test.py             # Тестирование модели. Создание файла предсказаний
+│   ├── test_main.http      # Тестирование FastAPI endpoint 
+│   ├── test_request.py     # Тестирование FastAPI endpoint (альтернативный вариант)
 │   └── validators.py       # Валидаторы
 │
 ├── notebooks/

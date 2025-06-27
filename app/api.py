@@ -11,6 +11,28 @@ predictor = PredictionService()
 
 @router.post("/predict_json")
 def predict_json(data: list[dict]):
+    """
+    Обрабатывает POST-запрос с данными в формате JSON для получения предсказаний модели.
+
+    Эта функция принимает список словарей, представляет его как структурированные данные,
+    и передаёт на обработку сервису `PredictionService`. Если произошла ошибка,
+    возвращает HTTPException со статус-кодом 400 и описанием ошибки.
+
+    Parameters
+    ----------
+    data : list[dict]
+        Список словарей, где каждый словарь представляет запись с признаками.
+
+    Returns
+    -------
+    dict
+        Результат работы метода `predict_from_json` из класса `PredictionService`.
+
+    Raises
+    ------
+    HTTPException
+        Статус 400, если произошла ошибка при обработке входных данных.
+    """
     try:
         return predictor.predict_from_json(data)
     except Exception as e:
@@ -19,6 +41,29 @@ def predict_json(data: list[dict]):
 
 @router.post("/predict_file")
 async def predict_file(file: UploadFile = File(...)):
+    """
+    Обрабатывает POST-запрос с загрузкой CSV-файла для получения предсказаний модели.
+
+    Эта асинхронная функция проверяет, что загруженный файл имеет расширение .csv,
+    считывает его содержимое, преобразует в DataFrame и передаёт на обработку сервису `PredictionService`.
+    Возвращает результат в виде JSON-ответа. При возникновении ошибки — выбрасывает исключение.
+
+    Parameters
+    ----------
+    file : UploadFile
+        Загружаемый файл. Должен быть в формате CSV.
+
+    Returns
+    -------
+    JSONResponse
+        Ответ в формате JSON, содержащий список предсказаний.
+
+    Raises
+    ------
+    HTTPException
+        - Статус 400, если загруженный файл не является CSV.
+        - Статус 500, если произошла ошибка при обработке файла.
+    """
     if not file.filename.endswith(".csv"):
         raise HTTPException(status_code=400, detail="Файл должен быть в формате .csv")
 

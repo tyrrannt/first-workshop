@@ -6,6 +6,21 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
 
 def get_preprocessor(categorical_features):
+    """
+    Создает и возвращает ColumnTransformer для предварительной обработки категориальных признаков.
+
+    Категориальные признаки кодируются с помощью OneHotEncoder, остальные признаки проходят без изменений.
+
+    Parameters
+    ----------
+    categorical_features : list of str
+        Список названий категориальных признаков, которые необходимо закодировать.
+
+    Returns
+    -------
+    ColumnTransformer
+        Объект ColumnTransformer, готовый к использованию для преобразования данных.
+    """
     categorical_pipeline = Pipeline([
         ('encoder', OneHotEncoder(handle_unknown='ignore'))
     ])
@@ -14,19 +29,54 @@ def get_preprocessor(categorical_features):
     ], remainder='passthrough')
 
 
+
 def get_models():
+    """
+    Возвращает словарь с экземплярами классификаторов машинного обучения.
+
+    В данный момент поддерживаются следующие модели:
+    - RandomForest: классификатор на основе случайного леса.
+    - LogisticRegression: логистическая регрессия.
+    - SVM: машина опорных векторов с поддержкой вероятностной оценки.
+
+    Returns
+    -------
+    dict
+        Словарь, где ключ — имя модели, значение — объект классификатора.
+    """
     return {
         "RandomForest": RandomForestClassifier(random_state=42),
-        # "LogisticRegression": LogisticRegression(max_iter=1000, random_state=42),
-        # "SVM": SVC(probability=True, random_state=42)
+        "LogisticRegression": LogisticRegression(max_iter=1000, random_state=42),
+        "SVM": SVC(probability=True, random_state=42)
     }
 
 
+
 def get_param_grids():
+    """
+    Возвращает словарь с сетками гиперпараметров для различных моделей классификации.
+
+    Каждая модель связана со своей сеткой параметров, используемой в процессе подбора гиперпараметров
+    (например, с помощью GridSearchCV). Сетки включают различные значения для настройки производительности модели.
+
+    Returns
+    -------
+    dict
+        Словарь, где ключ — имя модели, значение — словарь с параметрами и списком их возможных значений.
+        Поддерживаемые модели:
+        - "RandomForest": случайный лес.
+        - "LogisticRegression": логистическая регрессия.
+        - "SVM": машина опорных векторов.
+
+    Notes
+    -----
+    Имена параметров включают префикс 'classifier__', так как модели обычно используются внутри Pipeline,
+    где классификатор находится в шаге с именем 'classifier'.
+    """
     return {
         "RandomForest": {
             'classifier__n_estimators': [100, 200],
-            'classifier__max_depth': [15, 16, 17, 18, None],
+            'classifier__max_depth': [10, 15, 20, None],
             'classifier__min_samples_split': [2, 5],
             'classifier__min_samples_leaf': [1, 2],
         },
@@ -43,3 +93,4 @@ def get_param_grids():
             'classifier__class_weight': ['balanced']
         }
     }
+

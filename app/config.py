@@ -52,6 +52,7 @@ Alcohol_Consumption: Чрезмерное потребление алкогол�
 '''
 
 # === Список признаков с индивидуальным смыслом ===
+# Не подошли, поэтому убрал их из обучения
 INDIRECT_FEATURES = [
     'Cholesterol_Triglycerides', 'Exercise_Hours_Per_Week', 'Physical_Activity_Days_Per_Week',
     'Stress_Level', 'Sleep_Hours_Per_Day', 'Diet', 'Gender',

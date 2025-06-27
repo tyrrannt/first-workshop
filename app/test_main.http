@@ -2,10 +2,35 @@
 
 POST http://127.0.0.1:8000/predict_json
 Accept: application/json
+Content-Type: application/json
 
-###
-
-POST http://127.0.0.1:8000/predict_file
-Accept: application/json
-
-###
+[
+  {
+    "Age": 0.6292134831460674,
+    "Cholesterol": 0.0928571428571429,
+    "Heart rate": 0.0641613198900091,
+    "Diabetes": 0.0,
+    "Family History": 1.0,
+    "Smoking": 1.0,
+    "Obesity": 1.0,
+    "Alcohol Consumption": 0.0,
+    "Exercise Hours Per Week": 0.9955607505587406,
+    "Diet": 0,
+    "Previous Heart Problems": 0.0,
+    "Medication Use": 0.0,
+    "Stress Level": 10.0,
+    "Sedentary Hours Per Day": 0.7800748458973693,
+    "Income": 0.3704357394995212,
+    "BMI": 0.409366087293782,
+    "Triglycerides": 0.2051948051948052,
+    "Physical Activity Days Per Week": 7.0,
+    "Sleep Hours Per Day": 1.0,
+    "Blood sugar": 0.1027667984189723,
+    "CK-MB": 0.0026661861525165,
+    "Troponin": 0.0884551898242547,
+    "Gender": "Male",
+    "Systolic blood pressure": 0.4580645161290322,
+    "Diastolic blood pressure": 0.7790697674418605,
+    "id": 6632
+  }
+]
